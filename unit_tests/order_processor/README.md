@@ -44,3 +44,36 @@ Verify that:
 A unit test provides confidence that future changes to `OrderProcessor` do not accidentally break the expected order-total calculation.
 
 This test also documents the intended behavior of `ProcessOrder`.
+
+
+
+
+
+## Multiple Items Test
+
+This test verifies that `ProcessOrder` correctly calculates the total order amount when an order contains multiple items.
+
+The test follows the Arrange, Act, Assert pattern.
+
+### Arrange
+
+Create an `Order` containing multiple `OrderItem` objects with different prices and quantities.
+
+### Act
+
+Call:
+
+`ProcessOrder(order)`
+
+using an `OrderProcessor` instance.
+
+### Assert
+
+Verify that:
+
+- `ProcessOrder` returns `true`
+- `OrderTotal` matches the expected sum of all item prices multiplied by their quantities
+
+### Concept Practiced
+
+This test expands coverage beyond a single-item order and checks that the implementation correctly accumulates totals across multiple order items.
