@@ -77,3 +77,61 @@ Verify that:
 ### Concept Practiced
 
 This test expands coverage beyond a single-item order and checks that the implementation correctly accumulates totals across multiple order items.
+
+
+
+
+## Processed At Timestamp Test
+
+This test verifies that `OrderProcessor` correctly sets the `processed_at`
+timestamp when an order is successfully processed.
+
+The test follows the Arrange, Act, Assert pattern.
+
+### Arrange
+
+Create an order containing a single item and capture the current system time
+immediately before processing the order.
+
+### Act
+
+Call `process_order` on the `OrderProcessor` and capture the current system
+time again immediately after processing.
+
+### Assert
+
+Verify that:
+
+- `process_order` returns `true`
+- `processed_at` is greater than or equal to the time captured before processing
+- `processed_at` is less than or equal to the time captured after processing
+
+### Concept Practiced
+
+This test introduces verification of time-dependent behavior.
+
+Instead of comparing `processed_at` to one exact timestamp, the test verifies
+that it falls within the valid time interval surrounding the call to
+`process_order`.
+
+This avoids relying on an exact system time while still confirming that the
+timestamp was assigned during order processing.
+The important testing idea here is:
+
+before
+   ↓
+process_order()
+   ↓
+processed_at
+   ↓
+after
+
+Therefore:
+
+before <= processed_at <= after
+
+That's much better than trying to assert:
+
+processed_at == std::chrono::system_clock::now()
+
+because time continues moving between those operations.

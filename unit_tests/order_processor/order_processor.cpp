@@ -7,7 +7,7 @@ bool OrderProcessor::process_order(Order& order) {
         total_amount += item_price;
     }
 
-    order.processed_at = std::time(nullptr);
+    order.processed_at = std::chrono::system_clock::now();
     order.order_total = total_amount;
     return true;
 }
