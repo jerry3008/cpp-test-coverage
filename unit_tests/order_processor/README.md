@@ -135,3 +135,37 @@ That's much better than trying to assert:
 processed_at == std::chrono::system_clock::now()
 
 because time continues moving between those operations.
+
+
+
+
+## Item Limit Characterization Test
+
+This test documents the existing behavior of `OrderProcessor` when an order exceeds the maximum allowed number of items.
+
+The processor allows a maximum of 50 items per order.
+
+### Scenario
+
+Create an order containing more than 50 items.
+
+For example:
+
+```cpp
+std::vector<OrderItem> items(51, {10.0, 1, false});
+
+Expected Behavior
+
+The test verifies that:
+
+ProcessOrder returns false
+The order is rejected when the number of items exceeds the configured limit
+Why This Is a Characterization Test
+
+The purpose of this test is not to redesign the behavior.
+
+It captures and documents what the existing OrderProcessor currently does.
+
+This provides a safety net before refactoring or modifying the implementation.
+
+If future changes accidentally alter this behavior, the test will fail and highlight the change.
