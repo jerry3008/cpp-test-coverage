@@ -169,3 +169,66 @@ It captures and documents what the existing OrderProcessor currently does.
 This provides a safety net before refactoring or modifying the implementation.
 
 If future changes accidentally alter this behavior, the test will fail and highlight the change.
+
+
+
+## Bulk Discount Characterization Test
+
+This characterization test documents the existing bulk-order discount behavior
+of `OrderProcessor`.
+
+### Scenario
+
+The `OrderProcessor` applies a 10% discount when an order has a total value of
+$1,000 or more.
+
+The test creates an order whose value meets or exceeds the bulk discount
+threshold.
+
+### Arrange
+
+Create an order with items whose combined value qualifies for the bulk
+discount.
+
+For example, an order with a subtotal of:
+
+`$1,000.00`
+
+qualifies for the discount.
+
+### Act
+
+Process the order using `OrderProcessor`.
+
+### Assert
+
+Verify that:
+
+- The order is processed successfully.
+- The 10% bulk discount is applied.
+- An order with a $1,000 subtotal results in a final total of $900.
+
+### Calculation
+
+```text
+Subtotal:          $1,000.00
+Discount (10%):      $100.00
+                    ---------
+Final Total:         $900.00
+
+Why This Is a Characterization Test
+
+This test captures the current behavior of the existing OrderProcessor
+before the implementation is refactored.
+
+By documenting the $1,000 threshold and 10% discount in a test, future changes
+to the processor can be made with confidence that the existing bulk-order
+behavior has not accidentally changed.
+
+Concepts Practiced
+Characterization testing
+Arrange-Act-Assert
+Boundary conditions
+Business-rule testing
+Percentage calculations
+Regression protection
