@@ -1,10 +1,6 @@
 # cpp-test-coverage
 C++ unit testing, test coverage, mocking, and refactoring exercises using GoogleTest and Moq.
 
-
-
-
-
 # C++ Test Coverage
 
 This repository contains C++ exercises focused on improving test coverage, testability, and confidence when modifying existing code.
