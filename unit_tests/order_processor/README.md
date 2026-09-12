@@ -306,3 +306,40 @@ Testing multiple scenarios
 Business-rule verification
 Reducing duplicated test code
 Regression protection
+
+
+## High Quantity Shipping Test
+
+This test documents the shipping-method behavior of `OrderProcessor` when the
+total quantity of items in an order exceeds 10.
+
+### Scenario
+
+Create an order whose combined item quantity is greater than 10.
+
+For example:
+
+```text
+Item quantity: 11
+Expected Behavior
+
+After processing the order:
+
+The order is processed successfully.
+The shipping method is set to Express.
+Boundary
+
+The important rule is:
+
+Total quantity > 10 -> Express shipping
+
+This means a quantity of exactly 10 does not satisfy the greater than 10
+condition, while 11 does.
+
+Concepts Practiced
+Characterization testing
+Shipping-rule verification
+Boundary conditions
+Arrange-Act-Assert
+Business logic testing
+Regression protection
