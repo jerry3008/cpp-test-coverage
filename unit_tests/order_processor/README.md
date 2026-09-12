@@ -232,3 +232,77 @@ Boundary conditions
 Business-rule testing
 Percentage calculations
 Regression protection
+
+
+## Shipping Method Parameterized Test
+
+This test documents how `OrderProcessor` determines the shipping method based
+on whether an order contains large items.
+
+The test uses Google Test parameterized testing so that multiple input
+scenarios can be verified using the same test logic.
+
+### Objective
+
+Verify that different order configurations result in the expected shipping
+method.
+
+Instead of writing a separate test function for every scenario, the test
+receives input values and expected results as parameters.
+
+### Parameterized Testing
+
+Google Test parameterized tests allow the same test behavior to run against
+multiple sets of data.
+
+This is useful when the logic being tested is the same but the inputs and
+expected outputs vary.
+
+For this exercise, the parameters represent scenarios such as:
+
+- Order contains a large item
+- Order does not contain a large item
+- Expected shipping method for each case
+
+### Test Flow
+
+The test follows the Arrange-Act-Assert pattern.
+
+#### Arrange
+
+Create an order based on the current test parameters.
+
+The order may contain either normal-sized or large items.
+
+#### Act
+
+Process the order using `OrderProcessor`.
+
+#### Assert
+
+Verify that the shipping method assigned by the processor matches the
+expected shipping method supplied by the test parameter.
+
+## Why Use a Parameterized Test?
+
+Without parameterization, similar scenarios might require separate tests:
+
+```text
+Test normal item shipping
+Test large item shipping
+Test another normal item configuration
+Test another large item configuration
+With parameterized testing, the test logic is written once and executed with
+multiple sets of inputs.
+
+This reduces duplicated test code while increasing coverage.
+
+Concepts Practiced
+Google Test
+Parameterized tests
+Characterization testing
+Arrange-Act-Assert
+Testing multiple scenarios
+Business-rule verification
+Reducing duplicated test code
+Regression protection
