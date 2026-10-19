@@ -50,3 +50,50 @@ each calculation mode independently.
 - Refactoring
 - Behavior preservation
 - Unit testing preparation
+
+
+
+## Normal Feature Flag Test
+
+This test verifies that explicitly selecting the Normal feature flag
+produces the same result as using the default order-processing behavior.
+
+### Objective
+
+Ensure backward compatibility after introducing feature flags into
+the process_order method.
+
+### Arrange
+
+Create equivalent orders with known prices and quantities.
+
+### Act
+
+Process one order without specifying a feature flag.
+
+Process the other order with the Normal feature flag.
+
+### Assert
+
+Verify that:
+
+- Both orders are processed successfully.
+- Both orders produce the same total.
+- The Normal mode does not apply a discount or surcharge.
+
+### Why This Matters
+
+Feature flags allow new functionality to be introduced without changing
+existing application behavior.
+
+This test protects the original order calculation while additional
+calculation modes are introduced.
+
+### Concepts Practiced
+
+- Google Test
+- Feature flag testing
+- Default parameter behavior
+- Backward compatibility
+- Regression testing
+- Arrange-Act-Assert
