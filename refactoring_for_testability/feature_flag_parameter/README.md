@@ -147,3 +147,66 @@ Final total: $200 - $20 = $180
 - Business-rule verification
 - Regression testing
 
+
+## Surcharge Feature Flag Test
+
+This exercise completes the feature-flag testing suite by verifying
+that OrderProcessor applies a 15% surcharge when Surcharge mode
+is selected.
+
+### Objective
+
+Ensure that the Surcharge feature flag correctly increases
+the original order total by 15%.
+
+### Arrange
+
+Create an order with known prices and quantities.
+
+Example:
+- Unit price: $100
+- Quantity: 2
+- Original total: $200
+
+### Act
+
+Process the order using the Surcharge feature flag.
+
+### Assert
+
+Verify that:
+- Order processing succeeds.
+- A 15% surcharge is applied.
+- The final order total equals $230.
+
+### Calculation
+
+Original total: $200
+Surcharge: $200 × 0.15 = $30
+Final total: $200 + $30 = $230
+
+## Completed Feature Flag Tests
+
+| Feature Flag | Expected Behavior |
+|--------------|-------------------|
+| Normal | Preserve original total |
+| Discount | Apply 10% discount |
+| Surcharge | Apply 15% surcharge |
+
+## Future Improvements
+
+Additional calculation modes can be introduced by:
+
+1. Defining a new feature flag.
+2. Implementing the corresponding calculation behavior.
+3. Adding unit tests to verify the new mode.
+
+## Concepts Practiced
+
+- Google Test
+- Feature flag testing
+- Surcharge calculations
+- Regression testing
+- Extensible business logic
+- Arrange-Act-Assert
+- Refactoring for testability
