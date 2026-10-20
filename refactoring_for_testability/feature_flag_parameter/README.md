@@ -97,3 +97,53 @@ calculation modes are introduced.
 - Backward compatibility
 - Regression testing
 - Arrange-Act-Assert
+
+
+
+## Discount Feature Flag Test
+
+This test verifies that OrderProcessor correctly applies a 10% discount
+when the Discount feature flag is selected.
+
+### Objective
+
+Confirm that Discount mode reduces the original order total by 10%
+without affecting the rest of the order-processing behavior.
+
+### Arrange
+
+Create an order containing items with known prices and quantities.
+
+For example:
+
+- Unit price: $100
+- Quantity: 2
+- Original total: $200
+
+### Act
+
+Process the order using the Discount feature flag.
+
+### Assert
+
+Verify that:
+
+- The order is processed successfully.
+- The final order total is $180.
+- The correct 10% discount is applied.
+
+### Calculation
+
+Original total: $200
+Discount: $200 × 0.10 = $20
+Final total: $200 - $20 = $180
+
+### Concepts Practiced
+
+- Google Test
+- Feature flag testing
+- Discount calculations
+- Arrange-Act-Assert
+- Business-rule verification
+- Regression testing
+
